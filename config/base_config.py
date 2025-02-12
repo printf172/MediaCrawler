@@ -13,13 +13,13 @@
 PLATFORM = "xhs"
 KEYWORDS = "编程副业,编程兼职"  # 关键词搜索配置，以英文逗号分隔
 LOGIN_TYPE = "qrcode"  # qrcode or phone or cookie
-COOKIES = ""
+COOKIES = "abRequestId=8290b1ce-7bf9-52bf-ab75-4f8e492f0f8f; webBuild=4.55.1; xsecappid=xhs-pc-web; a1=194ba5bf51ddjarywdch0ed3n4sdzym2mpi4zm7p430000371440; webId=00044acbdbdefc8ef02af10ebd0fdab6; gid=yj4D02S8SS6Yyj4D02Di2U6WyffV0FvEfSx83U4dfqI4M4q8fuv6Ju888qWy4488JDyi8W0S; web_session=0400697d145f2fea9fc8ff09a9354b6220fab9; unread={%22ub%22:%2267960437000000001703bbf8%22%2C%22ue%22:%22679c40af000000002901707d%22%2C%22uc%22:29}; acw_tc=0a4a82e817382952013481610e09729c2bf7590399dba9e05c76a64afe3bca; websectiga=2845367ec3848418062e761c09db7caf0e8b79d132ccdd1a4f8e64a11d0cac0d; sec_poison_id=cbcbc416-0080-41c6-983f-471da29a64a3"
 # 具体值参见media_platform.xxx.field下的枚举值，暂时只支持小红书
 SORT_TYPE = "popularity_descending"
 # 具体值参见media_platform.xxx.field下的枚举值，暂时只支持抖音
 PUBLISH_TIME_TYPE = 0
 CRAWLER_TYPE = (
-    "search"  # 爬取类型，search(关键词搜索) | detail(帖子详情)| creator(创作者主页数据)
+    "detail"  # 爬取类型，search(关键词搜索) | detail(帖子详情)| creator(创作者主页数据)
 )
 # 自定义User Agent（暂时仅对XHS有效）
 UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0'
@@ -78,11 +78,11 @@ ENABLE_GET_IMAGES = False
 ENABLE_GET_COMMENTS = True
 
 # 爬取一级评论的数量控制(单视频/帖子)
-CRAWLER_MAX_COMMENTS_COUNT_SINGLENOTES = 10
+CRAWLER_MAX_COMMENTS_COUNT_SINGLENOTES = 1000
 
 # 是否开启爬二级评论模式, 默认不开启爬二级评论
 # 老版本项目使用了 db, 则需参考 schema/tables.sql line 287 增加表字段
-ENABLE_GET_SUB_COMMENTS = False
+ENABLE_GET_SUB_COMMENTS = True
 
 # 已废弃⚠️⚠️⚠️指定小红书需要爬虫的笔记ID列表
 # 已废弃⚠️⚠️⚠️ 指定笔记ID笔记列表会因为缺少xsec_token和xsec_source参数导致爬取失败
@@ -93,7 +93,7 @@ ENABLE_GET_SUB_COMMENTS = False
 
 # 指定小红书需要爬虫的笔记URL列表, 目前要携带xsec_token和xsec_source参数
 XHS_SPECIFIED_NOTE_URL_LIST = [
-    "https://www.xiaohongshu.com/explore/66fad51c000000001b0224b8?xsec_token=AB3rO-QopW5sgrJ41GwN01WCXh6yWPxjSoFI9D5JIMgKw=&xsec_source=pc_search"
+    "https://www.xiaohongshu.com/explore/63f1c95c0000000013016803?app_platform=android&ignoreEngage=true&app_version=8.69.5&share_from_user_hidden=true&xsec_source=app_share&type=normal&xsec_token=CBr3s8kLoCkjXpkHBHMeSWL2c07PgP96l-WwSOFYkXPas=&author_share=1&xhsshare=WeixinSession&shareRedId=OD01RERHOz02NzUyOTgwNjY7OTc8NThN&apptime=1738996984&share_id=53792a46922746f0ac991cf065d81045&share_channel=wechat"
     # ........................
 ]
 
@@ -190,7 +190,7 @@ CUSTOM_WORDS = {
 }
 
 # 停用(禁用)词文件路径
-STOP_WORDS_FILE = "./docs/hit_stopwords.txt"
+STOP_WORDS_FILE = "crawler/MediaCrawler/docs/hit_stopwords.txt"
 
 # 中文字体文件路径
-FONT_PATH = "./docs/STZHONGS.TTF"
+FONT_PATH = "crawler/MediaCrawler/docs/STZHONGS.TTF"
