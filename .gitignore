@@ -169,3 +169,7 @@ cython_debug/
 */.DS_Store
 /node_modules
 docs/.vitepress/cache
+
+# other gitignore
+.venv
+.refer
